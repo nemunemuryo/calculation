@@ -2,6 +2,8 @@ package main
 
 import (
   "io"
+  "strings"
+  "strconv"
   "github.com/chzyer/readline"
 )
 
@@ -27,5 +29,25 @@ func main() {
     } else if err == io.EOF {
       break
     }
+
+    //splitと数値変換
+    word := strings.Split(line, " ")
+    var i int
+    var j int
+    i, _ = strconv.Atoi(word[0])
+    j, _ = strconv.Atoi(word[2])
+
+    //演算
+    switch word[1] {
+    case "+":
+      println(i + j)
+    case "-":
+      println(i - j)
+    case "*":
+      println(i * j)
+    case "/":
+      println(i / j)
+    }
   }
+
 }
